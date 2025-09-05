@@ -1,0 +1,102 @@
+/* Gallery styles */
+div.gallery {
+    overflow: hidden;
+}
+
+div.gallery ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+div.gallery li {
+    padding: 0;
+}
+
+div.gallery img {
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.2s ease;
+}
+
+div.gallery ul:is(:hover, :focus-within) img {
+    opacity: calc(0.1 + (var(--active-lerp, 0) * 0.9));
+    filter: grayscale(calc(1 - var(--active-lerp, 0)));
+}
+
+div.gallery {
+    --lerp-0: 1;
+    --lerp-1: 0.5787037;
+    --lerp-2: 0.2962963;
+    --lerp-3: 0.125;
+    --lerp-4: 0.037037;
+    --lerp-5: 0.0046296;
+    --lerp-6: 0;
+}
+
+div.gallery a {
+    outline-offset: 4px;
+}
+
+div.gallery li {
+    flex: calc(0.1 + (var(--active-lerp, 0) * 1));
+    transition: flex 0.2s ease;
+}
+
+div.gallery li:is(:hover, :focus-within) {
+    --active-lerp: var(--lerp-0);
+    z-index: 7;
+}
+div.gallery li:has( + li:is(:hover, :focus-within)),
+div.gallery li:is(:hover, :focus-within) + li {
+    --active-lerp: var(--lerp-1);
+    z-index: 6;
+}
+div.gallery li:has( + li + li:is(:hover, :focus-within)),
+div.gallery li:is(:hover, :focus-within) + li + li {
+    --active-lerp: var(--lerp-2);
+    z-index: 5;
+}
+div.gallery li:has( + li + li + li:is(:hover, :focus-within)),
+div.gallery li:is(:hover, :focus-within) + li + li + li {
+    --active-lerp: var(--lerp-3);
+    z-index: 4;
+}
+div.gallery li:has( + li + li + li + li:is(:hover, :focus-within)),
+div.gallery li:is(:hover, :focus-within) + li + li + li + li {
+    --active-lerp: var(--lerp-4);
+    z-index: 3;
+}
+div.gallery li:has( + li + li + li + li + li:is(:hover, :focus-within)),
+div.gallery li:is(:hover, :focus-within) + li + li + li + li + li {
+    --active-lerp: var(--lerp-5);
+    z-index: 2;
+}
+div.gallery li:has( + li + li + li + li + li + li:is(:hover, :focus-within)),
+div.gallery li:is(:hover, :focus-within) + li + li + li + li + li + li {
+    --active-lerp: var(--lerp-6);
+    z-index: 1;
+}
+
+/*
+Example: Custom Colors
+.btn-primary {
+
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #25fd0d;
+    --bs-btn-border-color: #757002;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
+}
+ */
