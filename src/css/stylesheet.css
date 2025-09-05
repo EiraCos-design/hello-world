@@ -15,6 +15,7 @@ div.gallery li {
 }
 
 div.gallery img {
+    min-height: 500px;
     max-width: 100%;
     width: 100%;
     object-fit: cover;
@@ -22,8 +23,8 @@ div.gallery img {
 }
 
 div.gallery ul:is(:hover, :focus-within) img {
-    opacity: calc(0.1 + (var(--active-lerp, 0) * 0.9));
-    filter: grayscale(calc(1 - var(--active-lerp, 0)));
+    opacity: calc(0.1 + (var(--active-image, 0) * 0.9));
+    filter: grayscale(calc(1 - var(--active-image, 0)));
 }
 
 div.gallery {
@@ -41,42 +42,44 @@ div.gallery a {
 }
 
 div.gallery li {
-    flex: calc(0.1 + (var(--active-lerp, 0) * 1));
+    flex: calc(0.2 + (var(--active-image, 0) * 30));
     transition: flex 0.2s ease;
 }
-
+/* Actives Bild Style */
 div.gallery li:is(:hover, :focus-within) {
-    --active-lerp: var(--lerp-0);
+    --active-image: var(--lerp-0);
     z-index: 7;
 }
+/* Direktes Nachbar Bild 1 Style davor und danach */
 div.gallery li:has( + li:is(:hover, :focus-within)),
 div.gallery li:is(:hover, :focus-within) + li {
-    --active-lerp: var(--lerp-1);
+    --active-image: var(--lerp-1);
     z-index: 6;
 }
+/* Nachbar Bild 2 Style davor und danach */
 div.gallery li:has( + li + li:is(:hover, :focus-within)),
 div.gallery li:is(:hover, :focus-within) + li + li {
-    --active-lerp: var(--lerp-2);
+    --active-image: var(--lerp-2);
     z-index: 5;
 }
 div.gallery li:has( + li + li + li:is(:hover, :focus-within)),
 div.gallery li:is(:hover, :focus-within) + li + li + li {
-    --active-lerp: var(--lerp-3);
+    --active-image: var(--lerp-3);
     z-index: 4;
 }
 div.gallery li:has( + li + li + li + li:is(:hover, :focus-within)),
 div.gallery li:is(:hover, :focus-within) + li + li + li + li {
-    --active-lerp: var(--lerp-4);
+    --active-image: var(--lerp-4);
     z-index: 3;
 }
 div.gallery li:has( + li + li + li + li + li:is(:hover, :focus-within)),
 div.gallery li:is(:hover, :focus-within) + li + li + li + li + li {
-    --active-lerp: var(--lerp-5);
+    --active-image: var(--lerp-5);
     z-index: 2;
 }
 div.gallery li:has( + li + li + li + li + li + li:is(:hover, :focus-within)),
 div.gallery li:is(:hover, :focus-within) + li + li + li + li + li + li {
-    --active-lerp: var(--lerp-6);
+    --active-image: var(--lerp-6);
     z-index: 1;
 }
 
